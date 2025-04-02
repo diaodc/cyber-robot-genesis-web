@@ -1,6 +1,8 @@
 
 import { Button } from "@/components/ui/button";
 import GlitchText from "./GlitchText";
+import FlowLines from "./FlowLines";
+import ImageCarousel from "./ImageCarousel";
 
 const Hero = () => {
   return (
@@ -13,6 +15,9 @@ const Hero = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border-2 border-white/30 rounded-full animate-rotate-slow"></div>
         </div>
       </div>
+      
+      {/* Flow Lines Animation */}
+      <FlowLines />
 
       <div className="container max-w-6xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
@@ -23,7 +28,7 @@ const Hero = () => {
             
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
               <span className="text-white">The Future of </span>
-              <span className="text-cyber-blue text-glow">
+              <span className="text-cyber-blue">
                 <GlitchText text="Robotic Intelligence" />
               </span>
             </h1>
@@ -33,10 +38,10 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-6 justify-center md:justify-start">
-              <Button className="bg-cyber-blue text-black hover:bg-cyber-blue/80 btn-glow text-lg py-6 px-8">
+              <Button className="bg-cyber-blue text-black hover:bg-cyber-blue/80 btn-glow text-lg py-7 px-10">
                 Explore Models
               </Button>
-              <Button variant="outline" className="border-cyan-500 text-white hover:bg-muted text-lg py-6 px-8">
+              <Button variant="outline" className="border-cyan-500 text-white hover:bg-muted text-lg py-7 px-10">
                 Learn More
               </Button>
             </div>
@@ -53,21 +58,8 @@ const Hero = () => {
           
           <div className="md:w-1/2 flex justify-center md:justify-end">
             <div className="relative w-full max-w-md">
-              {/* Robot Image with glowing effects */}
-              <div className="w-full aspect-square relative rounded-3xl overflow-hidden border border-cyan-500/20 shadow-xl shadow-cyan-500/10">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyber-blue/10 to-cyber-purple/10"></div>
-                <img 
-                  src="https://images.unsplash.com/photo-1518770660439-4636190af475" 
-                  alt="Advanced AI Robot" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                
-                {/* Glowing points on the robot */}
-                <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-cyber-blue rounded-full animate-pulse"></div>
-                <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-cyber-purple rounded-full animate-pulse"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-4 h-4 bg-cyber-blue rounded-full animate-pulse"></div>
-              </div>
+              {/* Robot Images Carousel */}
+              <ImageCarousel className="rounded-3xl overflow-hidden border border-cyan-500/20 shadow-xl shadow-cyan-500/10 aspect-square" />
               
               {/* Specs overlay */}
               <div className="absolute -right-5 -bottom-5 bg-black/70 backdrop-blur-md border border-cyan-500/30 p-4 rounded-lg shadow-lg max-w-[200px]">
@@ -76,6 +68,29 @@ const Hero = () => {
                 <div className="text-gray-400 text-sm">32 TFLOPS • 8 Cores</div>
                 <div className="h-1 w-full bg-cyan-900 mt-2">
                   <div className="h-full w-3/4 bg-cyan-500 animate-pulse"></div>
+                </div>
+              </div>
+              
+              {/* Stats overlay */}
+              <div className="absolute -left-5 top-8 bg-black/70 backdrop-blur-md border border-cyber-purple/30 p-3 rounded-lg max-w-[180px] animate-float">
+                <div className="text-cyber-purple font-mono text-xs">AI EVOLUTION</div>
+                <div className="grid grid-cols-2 gap-2 mt-1">
+                  <div className="text-center">
+                    <div className="text-white text-lg font-bold">250+</div>
+                    <div className="text-gray-400 text-xs">Models</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-white text-lg font-bold">99.8%</div>
+                    <div className="text-gray-400 text-xs">Accuracy</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-white text-lg font-bold">1.2ms</div>
+                    <div className="text-gray-400 text-xs">Response</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-white text-lg font-bold">128TB</div>
+                    <div className="text-gray-400 text-xs">Memory</div>
+                  </div>
                 </div>
               </div>
             </div>

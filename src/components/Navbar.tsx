@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import GlitchText from './GlitchText';
+import Logo from './Logo';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,15 +26,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center">
             <a href="/" className="flex items-center">
-              <div className="w-10 h-10 relative mr-2">
-                <div className="absolute inset-0 border-2 border-cyber-blue rotate-45 animate-pulse"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-cyber-blue font-bold text-xl">C</span>
-                </div>
-              </div>
-              <span className="text-white font-bold text-xl">
-                <GlitchText text="CYBER ROBOT" />
-              </span>
+              <Logo />
             </a>
           </div>
 

@@ -55,11 +55,6 @@
     font-family: 'Rajdhani', sans-serif;
   }
 
-  .text-glow {
-    text-shadow: 0 0 10px theme('colors.primary.DEFAULT'), 
-                 0 0 20px theme('colors.primary.DEFAULT');
-  }
-
   .btn-glow {
     box-shadow: 0 0 10px theme('colors.primary.DEFAULT'), 
                 0 0 20px theme('colors.primary.DEFAULT');
@@ -92,4 +87,21 @@
   .animate-glow {
     animation: pulse-glow 2s ease-in-out infinite;
   }
+
+  @keyframes flow-lines {
+    0% {
+      stroke-dashoffset: 1000;
+      opacity: 0.8;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      opacity: 0.2;
+    }
+  }
+  
+  .flow-line {
+    stroke-dasharray: 10, 5;
+    animation: flow-lines 15s linear infinite;
+  }
 }
+
