@@ -9,24 +9,12 @@ interface CarouselImage {
 
 const images: CarouselImage[] = [
   {
-    src: "https://images.unsplash.com/photo-1518770660439-4636190af475",
-    alt: "Advanced neural circuit technology"
+    src: "/lovable-uploads/a014ca76-8ffa-4f72-8e2e-3f31acef7d73.png",
+    alt: "Advanced Cybernetic Neural Robot"
   },
   {
-    src: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e",
-    alt: "Humanoid robot with advanced AI"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b",
-    alt: "Next generation quantum processor"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1531297484001-80022131f5a1",
-    alt: "AI robot interface system"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
-    alt: "Advanced AI code visualization"
+    src: "/lovable-uploads/166c0bc3-980f-4c17-a4de-ccff839c5261.png",
+    alt: "Cutting-Edge AI Robotic Humanoid"
   }
 ];
 
@@ -52,7 +40,7 @@ const ImageCarousel = ({ className = "", overlay = true, autoSlide = true, inter
 
   return (
     <div className={`relative w-full ${className}`}>
-      <Carousel className="w-full" selectedIndex={currentSlide} setSelectedIndex={setCurrentSlide}>
+      <Carousel className="w-full">
         <CarouselContent>
           {images.map((image, index) => (
             <CarouselItem key={index}>
@@ -65,10 +53,6 @@ const ImageCarousel = ({ className = "", overlay = true, autoSlide = true, inter
                 {overlay && (
                   <>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-cyber-blue/10 to-cyber-purple/10"></div>
-                    <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDBoNDB2NDBoLTQweiIvPjxwYXRoIGQ9Ik0xIDFoMXYxaC0xeiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIi8+PC9nPjwvc3ZnPg==')] opacity-10"></div>
-                    
-                    {/* Tech spec overlay */}
                     <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-md border border-cyber-blue/30 p-3 rounded-lg">
                       <div className="text-cyber-blue font-mono text-xs">NEXUS AI VISION</div>
                       <div className="text-white font-bold text-sm">{image.alt}</div>
