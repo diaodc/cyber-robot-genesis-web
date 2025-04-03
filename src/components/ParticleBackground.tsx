@@ -32,6 +32,13 @@ const ParticleBackground = () => {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
+    // Create glow points
+    const glowPoints = [
+      { x: canvas.width * 0.2, y: canvas.height * 0.3, radius: 150, color: 'rgba(0, 240, 255, 0.1)' },
+      { x: canvas.width * 0.8, y: canvas.height * 0.7, radius: 180, color: 'rgba(155, 48, 255, 0.1)' },
+      { x: canvas.width * 0.5, y: canvas.height * 0.2, radius: 120, color: 'rgba(51, 255, 0, 0.1)' },
+    ];
+
     // Initialize particles
     particles.current = [];
     const particleCount = Math.floor(window.innerWidth / 10);
@@ -62,6 +69,25 @@ const ParticleBackground = () => {
 
     const drawParticles = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw glow effects first
+      for (const point of glowPoints) {
+        const gradient = ctx.createRadialGradient(
+          point.x, point.y, 0, 
+          point.x, point.y, point.radius
+        );
+        gradient.addColorStop(0, point.color);
+        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        
+        ctx.beginPath();
+        ctx.fillStyle = gradient;
+        ctx.arc(point.x, point.y, point.radius, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Make glow points float
+        point.x += Math.sin(Date.now() * 0.001) * 0.5;
+        point.y += Math.cos(Date.now() * 0.001) * 0.5;
+      }
       
       // Update and draw particles
       particles.current.forEach((particle) => {
