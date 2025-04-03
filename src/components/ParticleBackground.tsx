@@ -13,9 +13,22 @@ type Particle = {
   alpha: number;
 };
 
+type ShootingStar = {
+  x: number;
+  y: number;
+  length: number;
+  speed: number;
+  angle: number;
+  color: string;
+  alpha: number;
+  life: number;
+  maxLife: number;
+};
+
 const ParticleBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particles = useRef<Particle[]>([]);
+  const shootingStars = useRef<ShootingStar[]>([]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -34,9 +47,11 @@ const ParticleBackground = () => {
 
     // Create glow points
     const glowPoints = [
-      { x: canvas.width * 0.2, y: canvas.height * 0.3, radius: 150, color: 'rgba(0, 240, 255, 0.1)' },
-      { x: canvas.width * 0.8, y: canvas.height * 0.7, radius: 180, color: 'rgba(155, 48, 255, 0.1)' },
-      { x: canvas.width * 0.5, y: canvas.height * 0.2, radius: 120, color: 'rgba(51, 255, 0, 0.1)' },
+      { x: canvas.width * 0.2, y: canvas.height * 0.3, radius: 180, color: 'rgba(0, 240, 255, 0.05)' },
+      { x: canvas.width * 0.8, y: canvas.height * 0.7, radius: 220, color: 'rgba(155, 48, 255, 0.05)' },
+      { x: canvas.width * 0.5, y: canvas.height * 0.2, radius: 150, color: 'rgba(51, 255, 0, 0.05)' },
+      { x: canvas.width * 0.3, y: canvas.height * 0.8, radius: 200, color: 'rgba(0, 240, 255, 0.05)' },
+      { x: canvas.width * 0.7, y: canvas.height * 0.4, radius: 170, color: 'rgba(155, 48, 255, 0.05)' },
     ];
 
     // Initialize particles
@@ -66,6 +81,45 @@ const ParticleBackground = () => {
         alpha: Math.random() * 0.5 + 0.2,
       });
     }
+    
+    // Initialize shooting stars
+    shootingStars.current = [];
+
+    // Function to add a new shooting star
+    const addShootingStar = () => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * (canvas.height * 0.5); // Only in the top half
+      const length = Math.random() * 80 + 50;
+      const speed = Math.random() * 5 + 3;
+      const angle = Math.PI / 4 + (Math.random() * Math.PI / 4); // Angle between 45 and 90 degrees
+      const maxLife = Math.random() * 100 + 50;
+      
+      const star: ShootingStar = {
+        x,
+        y,
+        length,
+        speed,
+        angle,
+        color: '#ffffff',
+        alpha: Math.random() * 0.8 + 0.2,
+        life: 0,
+        maxLife
+      };
+      
+      shootingStars.current.push(star);
+    };
+
+    // Add initial shooting stars
+    for (let i = 0; i < 3; i++) {
+      addShootingStar();
+    }
+
+    const shootingStarInterval = setInterval(() => {
+      // Only add a new shooting star if there are fewer than 5
+      if (shootingStars.current.length < 5 && Math.random() < 0.3) {
+        addShootingStar();
+      }
+    }, 2000); // Check every 2 seconds
 
     const drawParticles = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -85,8 +139,8 @@ const ParticleBackground = () => {
         ctx.fill();
         
         // Make glow points float
-        point.x += Math.sin(Date.now() * 0.001) * 0.5;
-        point.y += Math.cos(Date.now() * 0.001) * 0.5;
+        point.x += Math.sin(Date.now() * 0.0005) * 0.5;
+        point.y += Math.cos(Date.now() * 0.0005) * 0.5;
       }
       
       // Update and draw particles
@@ -107,6 +161,43 @@ const ParticleBackground = () => {
         ctx.fillStyle = particle.color;
         ctx.fill();
         ctx.globalAlpha = 1;
+      });
+      
+      // Update and draw shooting stars
+      shootingStars.current = shootingStars.current.filter(star => {
+        star.life += 1;
+        if (star.life > star.maxLife) return false;
+        
+        const fade = 1 - (star.life / star.maxLife);
+        const currentAlpha = star.alpha * fade;
+        
+        star.x += Math.cos(star.angle) * star.speed;
+        star.y += Math.sin(star.angle) * star.speed;
+        
+        // Draw shooting star (a line with gradient)
+        const tailX = star.x - Math.cos(star.angle) * star.length;
+        const tailY = star.y - Math.sin(star.angle) * star.length;
+        
+        const gradient = ctx.createLinearGradient(
+          tailX, tailY, star.x, star.y
+        );
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 0)');
+        gradient.addColorStop(1, `rgba(255, 255, 255, ${currentAlpha})`);
+        
+        ctx.beginPath();
+        ctx.moveTo(tailX, tailY);
+        ctx.lineTo(star.x, star.y);
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        
+        // Draw a small circle at the head
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, 1, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${currentAlpha})`;
+        ctx.fill();
+        
+        return true;
       });
       
       // Draw connections between particles
@@ -142,6 +233,7 @@ const ParticleBackground = () => {
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       cancelAnimationFrame(animationId);
+      clearInterval(shootingStarInterval);
     };
   }, []);
 

@@ -2,12 +2,13 @@
 import { Button } from "@/components/ui/button";
 import GlitchText from "./GlitchText";
 import ImageCarousel from "./ImageCarousel";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center py-20 px-4">
       <div className="container max-w-6xl mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row-reverse items-center justify-between gap-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-24">
           <div className="md:w-1/2 space-y-6 md:text-left text-center">
             <div className="inline-block bg-muted px-4 py-1.5 rounded-full mb-2">
               <span className="text-cyber-blue text-sm font-medium tracking-wider">NEXT GEN AI ROBOTICS</span>
@@ -25,10 +26,10 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-6 justify-center md:justify-start">
-              <Button className="bg-cyber-blue text-black hover:bg-cyber-blue/80 text-lg py-7 px-10 transition-transform duration-300 hover:scale-105">
+              <Button className="bg-cyber-purple text-white hover:bg-cyber-purple/80 text-lg py-7 px-10 transition-transform duration-300 hover:scale-105">
                 Explore Models
               </Button>
-              <Button variant="outline" className="border-cyan-500 text-white hover:bg-muted text-lg py-7 px-10 transition-transform duration-300 hover:scale-105">
+              <Button variant="outline" className="border-cyber-purple text-white hover:bg-muted text-lg py-7 px-10 transition-transform duration-300 hover:scale-105">
                 Learn More
               </Button>
             </div>
@@ -43,12 +44,12 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="md:w-1/2 flex justify-center md:justify-start">
-            <div className="relative w-full max-w-lg">
+          <div className="md:w-1/2 flex justify-center md:justify-end">
+            <div className="relative w-full max-w-lg aspect-square">
               <ImageCarousel className="rounded-3xl overflow-hidden border border-cyan-500/20 shadow-xl shadow-cyan-500/10" />
               
               {/* Specs overlay */}
-              <div className="absolute -right-5 -bottom-5 bg-black/70 backdrop-blur-md border border-cyan-500/30 p-4 rounded-lg shadow-lg max-w-[200px] animate-float">
+              <div className="absolute -left-5 -bottom-5 bg-black/70 backdrop-blur-md border border-cyan-500/30 p-4 rounded-lg shadow-lg max-w-[200px] animate-float">
                 <div className="text-cyan-500 font-mono text-sm">MODEL X-1290</div>
                 <div className="text-white font-bold">NEURAL PROCESSOR</div>
                 <div className="text-gray-400 text-sm">32 TFLOPS • 8 Cores</div>
@@ -58,7 +59,7 @@ const Hero = () => {
               </div>
               
               {/* Stats overlay */}
-              <div className="absolute -left-5 top-8 bg-black/70 backdrop-blur-md border border-cyber-purple/30 p-3 rounded-lg max-w-[180px] animate-float">
+              <div className="absolute -right-5 top-8 bg-black/70 backdrop-blur-md border border-cyber-purple/30 p-3 rounded-lg max-w-[180px] animate-float">
                 <div className="text-cyber-purple font-mono text-xs">AI EVOLUTION</div>
                 <div className="grid grid-cols-2 gap-2 mt-1">
                   <div className="text-center">
