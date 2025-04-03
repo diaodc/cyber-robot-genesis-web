@@ -8,7 +8,7 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center py-20 px-4">
       <div className="container max-w-6xl mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-20 md:gap-80">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-20 md:gap-[100px]">
           <div className="md:w-1/2 space-y-6 md:text-left text-center">
             <div className="inline-block bg-muted px-4 py-1.5 rounded-full mb-2">
               <span className="text-cyber-blue text-sm font-medium tracking-wider">NEXT GEN AI ROBOTICS</span>
@@ -29,7 +29,7 @@ const Hero = () => {
               <Button className="bg-cyber-blue text-white hover:bg-cyber-blue/80 text-lg py-7 px-10 transition-transform duration-300 hover:scale-105">
                 Explore Models
               </Button>
-              <Button variant="outline" className="border-cyber-blue text-white hover:bg-cyber-blue/10 text-lg py-7 px-10 transition-transform duration-300 hover:scale-105">
+              <Button variant="outline" className="border-cyber-purple text-white bg-cyber-purple/10 hover:bg-cyber-purple/20 text-lg py-7 px-10 transition-transform duration-300 hover:scale-105">
                 Learn More
               </Button>
             </div>
@@ -37,7 +37,7 @@ const Hero = () => {
             <div className="flex items-center gap-4 pt-8 justify-center md:justify-start">
               <div className="flex -space-x-2">
                 <div className="w-10 h-10 rounded-full bg-cyber-blue"></div>
-                <div className="w-10 h-10 rounded-full bg-cyber-blue/70"></div>
+                <div className="w-10 h-10 rounded-full bg-cyber-purple"></div>
                 <div className="w-10 h-10 rounded-full bg-cyber-blue/40"></div>
               </div>
               <span className="text-gray-400">Trusted by 1000+ global companies</span>
@@ -59,8 +59,8 @@ const Hero = () => {
               </div>
               
               {/* Stats overlay */}
-              <div className="absolute -right-5 top-8 bg-black/70 backdrop-blur-md border border-cyber-blue/30 p-3 rounded-lg max-w-[180px] animate-float">
-                <div className="text-cyber-blue font-mono text-xs">AI EVOLUTION</div>
+              <div className="absolute -right-5 top-8 bg-black/70 backdrop-blur-md border border-cyber-purple/30 p-3 rounded-lg max-w-[180px] animate-float">
+                <div className="text-cyber-purple font-mono text-xs">AI EVOLUTION</div>
                 <div className="grid grid-cols-2 gap-2 mt-1">
                   <div className="text-center">
                     <div className="text-white text-lg font-bold">250+</div>

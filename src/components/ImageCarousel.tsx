@@ -10,15 +10,15 @@ interface CarouselImage {
 
 const images: CarouselImage[] = [
   {
-    src: "/lovable-uploads/e2519d08-3320-4723-b49c-81b03f3bffab.png",
+    src: "/lovable-uploads/57a69ae9-f497-4c17-9739-fe011b774445.png",
     alt: "Advanced White Robot with Blue Accents"
   },
   {
-    src: "/lovable-uploads/5728c04f-9e7f-44d8-b9eb-88d194afd278.png",
+    src: "/lovable-uploads/0929a7ef-9acf-4590-9943-444ffe650386.png",
     alt: "Futuristic Robot with Purple Highlights"
   },
   {
-    src: "/lovable-uploads/03cdb9ce-2ed0-499a-854f-b39230012b72.png",
+    src: "/lovable-uploads/22880109-428b-46f1-83b8-5163cb19abd5.png",
     alt: "Glowing Digital AI Face"
   }
 ];
@@ -45,7 +45,7 @@ const ImageCarousel = ({ className = "", overlay = true, autoSlide = true, inter
 
   return (
     <div className={`relative w-full ${className} transition-all duration-500 hover:scale-105`}>
-      <AspectRatio ratio={4/3} className="w-full h-full">
+      <AspectRatio ratio={8/6} className="w-full h-full">
         <Carousel className="w-full h-full">
           <CarouselContent className="h-full">
             {images.map((image, index) => (
