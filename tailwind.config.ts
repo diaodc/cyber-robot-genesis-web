@@ -114,6 +114,14 @@ export default {
 						transform: 'rotate(360deg)',
 					},
 				},
+				'reverse-spin': {
+					'0%': {
+						transform: 'rotate(360deg)',
+					},
+					'100%': {
+						transform: 'rotate(0deg)',
+					},
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -121,7 +129,13 @@ export default {
 				'float': 'float 3s ease-in-out infinite',
 				'pulse': 'pulse 2s ease-in-out infinite',
 				'scale': 'scale 2s ease-in-out infinite',
-				'rotate-slow': 'rotate-slow 15s linear infinite',
+				'rotate-slow': 'rotate-slow 25s linear infinite',
+				'reverse-spin': 'reverse-spin 30s linear infinite',
+			},
+			spacing: {
+				'1/6': '16.666667%',
+				'1/8': '12.5%',
+				'1/10': '10%',
 			}
 		}
 	},

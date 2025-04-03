@@ -10,24 +10,16 @@ interface CarouselImage {
 
 const images: CarouselImage[] = [
   {
-    src: "/lovable-uploads/4cad9fc6-0026-46cc-b9e7-aa787f40131c.png",
-    alt: "Advanced Cybernetic White Robot"
+    src: "/lovable-uploads/e2519d08-3320-4723-b49c-81b03f3bffab.png",
+    alt: "Advanced White Robot with Blue Accents"
   },
   {
-    src: "/lovable-uploads/7ef40193-d54f-4ed7-b816-b081b72a2425.png",
-    alt: "Futuristic Digital AI Face"
+    src: "/lovable-uploads/5728c04f-9e7f-44d8-b9eb-88d194afd278.png",
+    alt: "Futuristic Robot with Purple Highlights"
   },
   {
-    src: "/lovable-uploads/81388846-aa1c-4182-a98c-6f2023492e28.png",
-    alt: "Advanced Purple Robot Interface"
-  },
-  {
-    src: "/lovable-uploads/a014ca76-8ffa-4f72-8e2e-3f31acef7d73.png",
-    alt: "Advanced Cybernetic Neural Robot"
-  },
-  {
-    src: "/lovable-uploads/166c0bc3-980f-4c17-a4de-ccff839c5261.png",
-    alt: "Cutting-Edge AI Robotic Humanoid"
+    src: "/lovable-uploads/03cdb9ce-2ed0-499a-854f-b39230012b72.png",
+    alt: "Glowing Digital AI Face"
   }
 ];
 
@@ -53,7 +45,7 @@ const ImageCarousel = ({ className = "", overlay = true, autoSlide = true, inter
 
   return (
     <div className={`relative w-full ${className} transition-all duration-500 hover:scale-105`}>
-      <AspectRatio ratio={1} className="w-full h-full">
+      <AspectRatio ratio={4/3} className="w-full h-full">
         <Carousel className="w-full h-full">
           <CarouselContent className="h-full">
             {images.map((image, index) => (
@@ -67,8 +59,8 @@ const ImageCarousel = ({ className = "", overlay = true, autoSlide = true, inter
                   {overlay && (
                     <>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                      <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-md border border-cyber-purple/30 p-3 rounded-lg">
-                        <div className="text-cyber-purple font-mono text-xs">NEXUS AI VISION</div>
+                      <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-md border border-cyber-blue/30 p-3 rounded-lg">
+                        <div className="text-cyber-blue font-mono text-xs">NEXUS AI VISION</div>
                         <div className="text-white font-bold text-sm">{image.alt}</div>
                       </div>
                     </>
@@ -90,7 +82,7 @@ const ImageCarousel = ({ className = "", overlay = true, autoSlide = true, inter
             onClick={() => setCurrentSlide(index)}
             className={`w-2 h-2 rounded-full transition-all ${
               index === currentSlide 
-                ? 'bg-cyber-purple w-4' 
+                ? 'bg-cyber-blue w-4' 
                 : 'bg-white/30'
             }`}
             aria-label={`Go to slide ${index + 1}`}
